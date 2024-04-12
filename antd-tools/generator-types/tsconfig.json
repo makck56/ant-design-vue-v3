@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "outDir": "./lib",
+    "module": "commonjs",
+    "strict": false,
+    "declaration": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "lib": ["esnext"]
+  },
+  "include": ["src/**/*"]
+}
