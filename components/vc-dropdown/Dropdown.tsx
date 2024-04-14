@@ -5,6 +5,7 @@ import Trigger from '../vc-trigger';
 import placements from './placements';
 import { cloneElement } from '../_util/vnode';
 import classNames from '../_util/classNames';
+import type { CustomSlotsType } from '../_util/type';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
@@ -33,7 +34,10 @@ export default defineComponent({
     mouseLeaveDelay: PropTypes.number.def(0.1),
   },
   emits: ['visibleChange', 'overlayClick'],
-  slots: ['overlay'],
+  slots: Object as CustomSlotsType<{
+    overlay: any;
+    default: any;
+  }>,
   setup(props, { slots, emit, expose }) {
     const triggerVisible = ref(!!props.visible);
     watch(

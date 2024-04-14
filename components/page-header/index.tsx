@@ -14,6 +14,7 @@ import classNames from '../_util/classNames';
 import ResizeObserver from '../vc-resize-observer';
 import useDestroyed from '../_util/hooks/useDestroyed';
 import type { MouseEventHandler } from '../_util/EventInterface';
+import type { CustomSlotsType } from '../_util/type';
 
 export const pageHeaderProps = () => ({
   backIcon: PropTypes.any,
@@ -36,7 +37,17 @@ const PageHeader = defineComponent({
   name: 'APageHeader',
   props: pageHeaderProps(),
   // emits: ['back'],
-  slots: ['backIcon', 'avatar', 'breadcrumb', 'title', 'subTitle', 'tags', 'extra', 'footer'],
+  slots: Object as CustomSlotsType<{
+    backIcon: any;
+    avatar: any;
+    breadcrumb: any;
+    title: any;
+    subTitle: any;
+    tags: any;
+    extra: any;
+    footer: any;
+    default: any;
+  }>,
   setup(props, { emit, slots }) {
     const { prefixCls, direction, pageHeader } = useConfigInject('page-header', props);
     const compact = ref(false);

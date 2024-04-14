@@ -5,6 +5,7 @@ import PropTypes from '../_util/vue-types';
 import initDefaultProps from '../_util/props-util/initDefaultProps';
 import { tuple } from '../_util/type';
 import useConfigInject from '../_util/hooks/useConfigInject';
+import type { CustomSlotsType } from '../_util/type';
 
 export const timelineItemProps = () => ({
   prefixCls: String,
@@ -24,7 +25,11 @@ export default defineComponent({
     color: 'blue',
     pending: false,
   }),
-  slots: ['dot', 'label'],
+  slots: Object as CustomSlotsType<{
+    dot: any;
+    label: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const { prefixCls } = useConfigInject('timeline', props);
     return () => {

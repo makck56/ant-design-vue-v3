@@ -3,6 +3,7 @@ import { initDefaultProps } from '../../_util/props-util';
 import { defineComponent, ref } from 'vue';
 import { drawerProps } from './IDrawerPropTypes';
 import PortalWrapper from '../../_util/PortalWrapper';
+import type { CustomSlotsType } from '../../_util/type';
 
 const DrawerWrapper = defineComponent({
   compatConfig: { MODE: 3 },
@@ -24,7 +25,10 @@ const DrawerWrapper = defineComponent({
     autofocus: true,
   }),
   emits: ['handleClick', 'close'],
-  slots: ['handler'],
+  slots: Object as CustomSlotsType<{
+    handler: any;
+    default: any;
+  }>,
   setup(props, { emit, slots }) {
     const dom = ref<HTMLElement>(null);
 

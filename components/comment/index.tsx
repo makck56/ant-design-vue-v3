@@ -2,9 +2,10 @@ import type { ExtractPropTypes } from 'vue';
 import { defineComponent } from 'vue';
 import PropTypes from '../_util/vue-types';
 import { flattenChildren } from '../_util/props-util';
-import type { VueNode } from '../_util/type';
+import type { VueNode, CustomSlotsType } from '../_util/type';
 import { withInstall } from '../_util/type';
 import useConfigInject from '../_util/hooks/useConfigInject';
+
 export const commentProps = () => ({
   actions: Array,
   /** The element to display as the comment author. */
@@ -25,7 +26,14 @@ const Comment = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'AComment',
   props: commentProps(),
-  slots: ['actions', 'author', 'avatar', 'content', 'datetime'],
+  slots: Object as CustomSlotsType<{
+    actions: any;
+    author: any;
+    avatar: any;
+    content: any;
+    datetime: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const { prefixCls, direction } = useConfigInject('comment', props);
     const renderNested = (prefixCls: string, children: VueNode) => {

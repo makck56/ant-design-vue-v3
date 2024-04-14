@@ -5,6 +5,8 @@ import Content from './Content';
 import { getPropsSlot } from '../../_util/props-util';
 import type { CSSProperties, PropType } from 'vue';
 import { defineComponent, ref, watchEffect } from 'vue';
+import type { CustomSlotsType } from '../../_util/type';
+
 function noop() {}
 export default defineComponent({
   compatConfig: { MODE: 3 },
@@ -37,7 +39,11 @@ export default defineComponent({
     onVisibleChange: Function,
     onPopupAlign: Function,
   },
-  slots: ['arrowContent', 'overlay'],
+  slots: Object as CustomSlotsType<{
+    arrowContent: any;
+    overlay: any;
+    default: any;
+  }>,
   setup(props, { slots, attrs, expose }) {
     const triggerDOM = ref();
 

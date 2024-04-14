@@ -11,6 +11,7 @@ import KeyCode from '../../_util/KeyCode';
 import useDirectionStyle from './hooks/useDirectionStyle';
 import Overflow from '../../vc-overflow';
 import devWarning from '../../vc-util/devWarning';
+import type { CustomSlotsType } from '../../_util/type';
 import type { MouseEventHandler } from '../../_util/EventInterface';
 
 let indexGuid = 0;
@@ -36,7 +37,11 @@ export default defineComponent({
   inheritAttrs: false,
   props: menuItemProps(),
   // emits: ['mouseenter', 'mouseleave', 'click', 'keydown', 'focus'],
-  slots: ['icon', 'title'],
+  slots: Object as CustomSlotsType<{
+    icon: any;
+    title: any;
+    default: any;
+  }>,
   setup(props, { slots, emit, attrs }) {
     const instance = getCurrentInstance();
     const isMeasure = useMeasure();
@@ -202,7 +207,7 @@ export default defineComponent({
       }
 
       // ============================ Render ============================
-      const optionRoleProps = {};
+      const optionRoleProps = {} as any;
 
       if (props.role === 'option') {
         optionRoleProps['aria-selected'] = selected.value;

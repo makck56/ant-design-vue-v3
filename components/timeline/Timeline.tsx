@@ -8,6 +8,7 @@ import TimelineItem from './TimelineItem';
 import LoadingOutlined from '@ant-design/icons-vue/LoadingOutlined';
 import { tuple } from '../_util/type';
 import useConfigInject from '../_util/hooks/useConfigInject';
+import type { CustomSlotsType } from '../_util/type';
 
 export const timelineProps = () => ({
   prefixCls: String,
@@ -27,7 +28,11 @@ export default defineComponent({
     reverse: false,
     mode: '',
   }),
-  slots: ['pending', 'pendingDot'],
+  slots: Object as CustomSlotsType<{
+    pending: any;
+    pendingDot: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const { prefixCls, direction } = useConfigInject('timeline', props);
     const getPositionCls = (ele, idx: number) => {

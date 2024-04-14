@@ -21,6 +21,7 @@ import { cloneVNodes } from '../_util/vnode';
 import omit from '../_util/omit';
 import { tooltipDefaultProps } from '../tooltip/Tooltip';
 import ActionButton from '../_util/ActionButton';
+import type { CustomSlotsType } from '../_util/type';
 
 export const popconfirmProps = () => ({
   ...abstractTooltipProps(),
@@ -70,7 +71,17 @@ const Popconfirm = defineComponent({
     okType: 'primary',
     disabled: false,
   }),
-  slots: ['title', 'content', 'okText', 'icon', 'cancelText', 'cancelButton', 'okButton'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    content: any;
+    okText: any;
+    icon: any;
+    cancel: any;
+    cancelText: any;
+    cancelButton: any;
+    okButton: any;
+    default: any;
+  }>,
   emits: ['update:visible', 'visibleChange'],
   setup(props: PopconfirmProps, { slots, emit, expose }) {
     onMounted(() => {

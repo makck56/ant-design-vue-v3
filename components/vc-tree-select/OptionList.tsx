@@ -11,6 +11,7 @@ import { getAllKeys, isCheckDisabled } from './utils/valueUtil';
 import { useBaseProps } from '../vc-select';
 import useInjectLegacySelectContext from './LegacyContext';
 import useInjectSelectContext from './TreeSelectContext';
+import type { CustomSlotsType } from '../_util/type';
 
 const HIDDEN_STYLE = {
   width: 0,
@@ -35,7 +36,11 @@ export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'OptionList',
   inheritAttrs: false,
-  slots: ['notFoundContent', 'menuItemSelectedIcon'],
+  slots: Object as CustomSlotsType<{
+    notFoundContent: any;
+    menuItemSelectedIcon: any;
+    default: any;
+  }>,
   setup(_, { slots, expose }) {
     const baseProps = useBaseProps();
     const legacyContext = useInjectLegacySelectContext();

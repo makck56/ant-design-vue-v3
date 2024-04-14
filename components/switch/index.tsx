@@ -11,6 +11,7 @@ import useConfigInject from '../_util/hooks/useConfigInject';
 import { useInjectFormItemContext } from '../form/FormItemContext';
 import omit from '../_util/omit';
 import type { FocusEventHandler } from '../_util/EventInterface';
+import type { CustomSlotsType } from '../_util/type';
 
 export const SwitchSizes = tuple('small', 'default');
 type CheckedType = boolean | string | number;
@@ -60,7 +61,11 @@ const Switch = defineComponent({
   __ANT_SWITCH: true,
   inheritAttrs: false,
   props: switchProps(),
-  slots: ['checkedChildren', 'unCheckedChildren'],
+  slots: Object as CustomSlotsType<{
+    checkedChildren: any;
+    unCheckedChildren: any;
+    default: any;
+  }>,
   // emits: ['update:checked', 'mouseup', 'change', 'click', 'keydown', 'blur'],
   setup(props, { attrs, slots, expose, emit }) {
     const formItemContext = useInjectFormItemContext();

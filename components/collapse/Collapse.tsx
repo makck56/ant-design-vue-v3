@@ -16,6 +16,7 @@ import classNames from '../_util/classNames';
 import useConfigInject from '../_util/hooks/useConfigInject';
 import type { CollapsePanelProps } from './CollapsePanel';
 import collapseMotion from '../_util/collapseMotion';
+import type { CustomSlotsType } from '../_util/type';
 
 type Key = number | string;
 
@@ -41,7 +42,10 @@ export default defineComponent({
     openAnimation: collapseMotion('ant-motion-collapse', false),
     expandIconPosition: 'left',
   }),
-  slots: ['expandIcon'],
+  slots: Object as CustomSlotsType<{
+    expandIcon: any;
+    default: any;
+  }>,
   // emits: ['change', 'update:activeKey'],
   setup(props, { attrs, slots, emit }) {
     const stateActiveKey = ref<Key[]>(

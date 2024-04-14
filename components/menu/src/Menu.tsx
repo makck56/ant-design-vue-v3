@@ -1,4 +1,4 @@
-import type { Key } from '../../_util/type';
+import type { Key, CustomSlotsType } from '../../_util/type';
 import type { ExtractPropTypes, PropType, VNode } from 'vue';
 import {
   Teleport,
@@ -88,7 +88,11 @@ export default defineComponent({
   name: 'AMenu',
   inheritAttrs: false,
   props: menuProps(),
-  slots: ['expandIcon', 'overflowedIndicator'],
+  slots: Object as CustomSlotsType<{
+    expandIcon: any;
+    overflowedIndicator: any;
+    default: any;
+  }>,
   setup(props, { slots, emit, attrs }) {
     const { prefixCls, direction, getPrefixCls } = useConfigInject('menu', props);
     const store = ref<Record<string, StoreMenuInfo>>({});

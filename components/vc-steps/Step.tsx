@@ -2,6 +2,7 @@ import PropTypes, { withUndefined } from '../_util/vue-types';
 import type { CSSProperties, PropType } from 'vue';
 import { defineComponent } from 'vue';
 import type { EventHandler } from '../_util/EventInterface';
+import type { CustomSlotsType } from '../_util/type';
 
 function isString(str: any): str is string {
   return typeof str === 'string';
@@ -36,7 +37,16 @@ export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'Step',
   props: VcStepProps(),
-  slots: ['title', 'subTitle', 'description', 'tailContent', 'stepIcon', 'progressDot'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    icon: any;
+    subTitle: any;
+    description: any;
+    tailContent: any;
+    stepIcon: any;
+    progressDot: any;
+    default: any;
+  }>,
   emits: ['click', 'stepClick'],
   setup(props, { slots, emit }) {
     const onItemClick: EventHandler = e => {

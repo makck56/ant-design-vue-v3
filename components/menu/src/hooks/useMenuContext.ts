@@ -34,7 +34,7 @@ export interface MenuContextProps {
   inlineCollapsed: Ref<boolean>;
   antdMenuTheme?: ComputedRef<MenuTheme>;
 
-  siderCollapsed?: ComputedRef<boolean>;
+  siderCollapsed?: Ref<boolean>;
 
   // // Mode
   mode: Ref<MenuMode>;

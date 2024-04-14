@@ -15,6 +15,7 @@ import dropIndicatorRender from './utils/dropIndicator';
 import devWarning from '../vc-util/devWarning';
 import { warning } from '../vc-util/warning';
 import omit from '../_util/omit';
+import type { CustomSlotsType } from '../_util/type';
 
 export interface AntdTreeNodeAttribute {
   eventKey: string;
@@ -151,7 +152,13 @@ export default defineComponent({
     showIcon: false,
     blockNode: false,
   }),
-  slots: ['icon', 'title', 'switcherIcon', 'titleRender'],
+  slots: Object as CustomSlotsType<{
+    icon: any;
+    title: any;
+    switcherIcon: any;
+    titleRender: any;
+    default: any;
+  }>,
   // emits: [
   //   'update:selectedKeys',
   //   'update:checkedKeys',

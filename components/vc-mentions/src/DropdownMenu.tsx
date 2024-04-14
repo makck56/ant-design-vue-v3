@@ -4,6 +4,7 @@ import { onBeforeUnmount, defineComponent, inject, ref } from 'vue';
 import type { OptionProps } from './Option';
 import MentionsContextKey from './MentionsContext';
 import Spin from '../../spin';
+import type { CustomSlotsType } from '../../_util/type';
 
 function noop() {}
 export default defineComponent({
@@ -16,7 +17,11 @@ export default defineComponent({
       default: () => [],
     },
   },
-  slots: ['notFoundContent', 'option'],
+  slots: Object as CustomSlotsType<{
+    notFoundContent: any;
+    option: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const {
       activeIndex,

@@ -10,6 +10,7 @@ import Handle from '../Handle';
 import * as utils from '../utils';
 import BaseMixin from '../../../_util/BaseMixin';
 import supportsPassive from '../../../_util/supportsPassive';
+import type { CustomSlotsType } from '../../../_util/type';
 
 function noop() {}
 
@@ -43,7 +44,10 @@ export default function createSlider(Component) {
     name: 'CreateSlider',
     mixins: [BaseMixin, Component],
     inheritAttrs: false,
-    slots: ['mark'],
+    slots: Object as CustomSlotsType<{
+      mark: any;
+      default: any;
+    }>,
     props: initDefaultProps(propTypes, {
       prefixCls: 'rc-slider',
       min: 0,

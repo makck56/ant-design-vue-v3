@@ -3,6 +3,7 @@ import DropdownMenu from './DropdownMenu';
 import type { PropType } from 'vue';
 import { computed, defineComponent } from 'vue';
 import type { OptionProps } from './Option';
+import type { CustomSlotsType } from '../../_util/type';
 
 const BUILT_IN_PLACEMENTS = {
   bottomRight: {
@@ -55,7 +56,11 @@ export default defineComponent({
     getPopupContainer: Function,
     direction: String,
   },
-  slots: ['notFoundContent', 'option'],
+  slots: Object as CustomSlotsType<{
+    notFoundContent: any;
+    option: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const getDropdownPrefix = () => {
       return `${props.prefixCls}-dropdown`;

@@ -3,6 +3,7 @@ import { filterEmpty } from '../_util/props-util';
 import { cloneElement } from '../_util/vnode';
 import { defineComponent } from 'vue';
 import classNames from '../_util/classNames';
+import type { CustomSlotsType } from '../_util/type';
 
 export type Status = 'error' | 'process' | 'finish' | 'wait';
 export type StepIconRender = (info: {
@@ -41,7 +42,11 @@ export default defineComponent({
     }).loose,
     stepIcon: Function,
   },
-  slots: ['stepIcon', 'progressDot'],
+  slots: Object as CustomSlotsType<{
+    stepIcon: any;
+    progressDot: any;
+    default: any;
+  }>,
   emits: ['change'],
   setup(props, { slots, emit }) {
     const onStepClick = next => {

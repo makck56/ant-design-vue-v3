@@ -14,6 +14,7 @@ import getPlacements from './placements';
 import firstNotUndefined from '../_util/firstNotUndefined';
 import raf from '../_util/raf';
 export type { AdjustOverflow, PlacementsConfig } from './placements';
+import type { CustomSlotsType } from '../_util/type';
 
 // https://github.com/react-component/tooltip
 // https://github.com/yiminghe/dom-align
@@ -73,7 +74,10 @@ export default defineComponent({
     arrowPointAtCenter: false,
     autoAdjustOverflow: true,
   }),
-  slots: ['title'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    default: any;
+  }>,
   // emits: ['update:visible', 'visibleChange'],
   setup(props, { slots, emit, attrs, expose }) {
     const { prefixCls, getPopupContainer } = useConfigInject('tooltip', props);

@@ -4,6 +4,7 @@ import PropTypes from '../_util/vue-types';
 import { getPropsSlot, initDefaultProps } from '../_util/props-util';
 import classNames from '../_util/classNames';
 import useConfigInject from '../_util/hooks/useConfigInject';
+import type { CustomSlotsType } from '../_util/type';
 import { useInjectAnchor } from './context';
 
 export const anchorLinkProps = () => ({
@@ -19,7 +20,10 @@ export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'AAnchorLink',
   props: initDefaultProps(anchorLinkProps(), { href: '#' }),
-  slots: ['title'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     let mergedTitle = null;
     const {

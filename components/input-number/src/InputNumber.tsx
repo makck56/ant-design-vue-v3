@@ -8,6 +8,7 @@ import useFrame from './hooks/useFrame';
 import type { HTMLAttributes, PropType } from 'vue';
 import { watch, computed, ref, defineComponent } from 'vue';
 import type { ChangeEvent, KeyboardEventHandler } from '../../_util/EventInterface';
+import type { CustomSlotsType } from '../../_util/type';
 import KeyCode from '../../_util/KeyCode';
 import classNames from '../../_util/classNames';
 
@@ -86,7 +87,11 @@ export default defineComponent({
     ...inputNumberProps(),
     lazy: Boolean,
   },
-  slots: ['upHandler', 'downHandler'],
+  slots: Object as CustomSlotsType<{
+    upHandler: any;
+    downHandler: any;
+    default: any;
+  }>,
   setup(props, { attrs, slots, emit, expose }) {
     const inputRef = ref<HTMLInputElement>();
     const focus = ref(false);

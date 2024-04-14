@@ -9,6 +9,8 @@ import type { SizeType } from '../config-provider';
 import isPlainObject from 'lodash-es/isPlainObject';
 import useConfigInject from '../_util/hooks/useConfigInject';
 import devWarning from '../vc-util/devWarning';
+import type { CustomSlotsType } from '../_util/type';
+
 export interface CardTabListType {
   key: string;
   tab: any;
@@ -52,7 +54,15 @@ const Card = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'ACard',
   props: cardProps(),
-  slots: ['title', 'extra', 'tabBarExtraContent', 'actions', 'cover', 'customTab'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    extra: any;
+    tabBarExtraContent: any;
+    actions: any;
+    cover: any;
+    customTab: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const { prefixCls, direction, size } = useConfigInject('card', props);
     const getAction = (actions: VNodeTypes[]) => {

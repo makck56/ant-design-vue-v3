@@ -27,6 +27,7 @@ import MentionsContextKey from './MentionsContext';
 import antInputDirective from '../../_util/antInputDirective';
 import omit from '../../_util/omit';
 import type { EventHandler } from '../../_util/EventInterface';
+import type { CustomSlotsType } from '../../_util/type';
 
 export type MentionsProps = Partial<ExtractPropTypes<typeof vcMentionsProps>>;
 
@@ -37,7 +38,11 @@ export default defineComponent({
   name: 'Mentions',
   inheritAttrs: false,
   props: initDefaultProps(vcMentionsProps, defaultProps),
-  slots: ['notFoundContent', 'option'],
+  slots: Object as CustomSlotsType<{
+    notFoundContent: any;
+    option: any;
+    default: any;
+  }>,
   emits: ['change', 'select', 'search', 'focus', 'blur', 'pressenter'],
   setup(props, { emit, attrs, expose, slots }) {
     const measure = ref(null);

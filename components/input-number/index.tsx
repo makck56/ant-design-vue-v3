@@ -5,6 +5,7 @@ import UpOutlined from '@ant-design/icons-vue/UpOutlined';
 import DownOutlined from '@ant-design/icons-vue/DownOutlined';
 import VcInputNumber, { inputNumberProps as baseInputNumberProps } from './src/InputNumber';
 import type { SizeType } from '../config-provider';
+import type { CustomSlotsType } from '../_util/type';
 import { useInjectFormItemContext } from '../form/FormItemContext';
 import useConfigInject from '../_util/hooks/useConfigInject';
 import { cloneElement } from '../_util/vnode';
@@ -35,7 +36,14 @@ const InputNumber = defineComponent({
   inheritAttrs: false,
   props: inputNumberProps(),
   // emits: ['focus', 'blur', 'change', 'input', 'update:value'],
-  slots: ['addonBefore', 'addonAfter', 'prefix'],
+  slots: Object as CustomSlotsType<{
+    addonBefore?: any;
+    addonAfter?: any;
+    prefix?: any;
+    default?: any;
+    upIcon?: any;
+    downIcon?: any;
+  }>,
   setup(props, { emit, expose, attrs, slots }) {
     const formItemContext = useInjectFormItemContext();
     const { prefixCls, size, direction } = useConfigInject('input-number', props);

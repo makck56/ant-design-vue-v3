@@ -7,6 +7,7 @@ import { tuple, withInstall } from '../_util/type';
 import useConfigInject from '../_util/hooks/useConfigInject';
 import useFlexGapSupport from '../_util/hooks/useFlexGapSupport';
 import classNames from '../_util/classNames';
+import type { CustomSlotsType } from '../_util/type';
 
 export type SpaceSize = SizeType | number;
 const spaceSize = {
@@ -34,7 +35,10 @@ const Space = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'ASpace',
   props: spaceProps(),
-  slots: ['split'],
+  slots: Object as CustomSlotsType<{
+    split: any;
+    default: any;
+  }>,
   setup(props, { slots }) {
     const { prefixCls, space, direction: directionConfig } = useConfigInject('space', props);
     const supportFlexGap = useFlexGapSupport();

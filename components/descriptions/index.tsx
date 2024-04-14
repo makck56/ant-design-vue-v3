@@ -26,6 +26,7 @@ import PropTypes from '../_util/vue-types';
 import { cloneElement } from '../_util/vnode';
 import { flattenChildren } from '../_util/props-util';
 import useConfigInject from '../_util/hooks/useConfigInject';
+import type { CustomSlotsType } from '../_util/type';
 
 export const DescriptionsItemProps = {
   prefixCls: String,
@@ -49,7 +50,10 @@ export const DescriptionsItem = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'ADescriptionsItem',
   props: descriptionsItemProp(),
-  slots: ['label'],
+  slots: Object as CustomSlotsType<{
+    label: any;
+    default: any;
+  }>,
   setup(_, { slots }) {
     return () => slots.default?.();
   },
@@ -161,7 +165,11 @@ const Descriptions = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'ADescriptions',
   props: descriptionsProps(),
-  slots: ['title', 'extra'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    extra: any;
+    default: any;
+  }>,
   Item: DescriptionsItem,
   setup(props, { slots }) {
     const { prefixCls, direction } = useConfigInject('descriptions', props);

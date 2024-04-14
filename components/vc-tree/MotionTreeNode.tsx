@@ -14,6 +14,7 @@ import {
 } from 'vue';
 import { treeNodeProps } from './props';
 import collapseMotion from '../_util/collapseMotion';
+import type { CustomSlotsType } from '../_util/type';
 
 export default defineComponent({
   compatConfig: { MODE: 3 },
@@ -29,7 +30,13 @@ export default defineComponent({
     motionType: String,
     // treeNodeRequiredProps: { type: Object as PropType<TreeNodeRequiredProps> },
   },
-  slots: ['title', 'icon', 'switcherIcon', 'checkable'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    icon: any;
+    switcherIcon: any;
+    checkable: any;
+    default: any;
+  }>,
   setup(props, { attrs, slots }) {
     const visible = ref(true);
     const context = useInjectTreeContext();

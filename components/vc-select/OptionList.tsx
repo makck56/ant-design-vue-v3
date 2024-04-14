@@ -16,6 +16,7 @@ import useBaseProps from './hooks/useBaseProps';
 import type { RawValueType } from './Select';
 import useSelectProps from './SelectContext';
 import type { ScrollConfig } from '../vc-virtual-list/List';
+import type { CustomSlotsType } from '../_util/type';
 
 export interface RefOptionListProps {
   onKeydown: (e?: KeyboardEvent) => void;
@@ -37,7 +38,10 @@ const OptionList = defineComponent({
   compatConfig: { MODE: 3 },
   name: 'OptionList',
   inheritAttrs: false,
-  slots: ['option'],
+  slots: Object as CustomSlotsType<{
+    option: any;
+    default: any;
+  }>,
   setup(_, { expose, slots }) {
     const baseProps = useBaseProps();
     const props = useSelectProps();

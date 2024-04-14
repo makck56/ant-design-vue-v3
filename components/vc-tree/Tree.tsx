@@ -43,6 +43,7 @@ import KeyCode from '../_util/KeyCode';
 import classNames from '../_util/classNames';
 import pickAttrs from '../_util/pickAttrs';
 import useMaxLevel from './useMaxLevel';
+import type { CustomSlotsType } from '../_util/type';
 
 const MAX_RETRY_TIMES = 10;
 
@@ -55,7 +56,13 @@ export default defineComponent({
   compatConfig: { MODE: 3 },
   name: 'Tree',
   inheritAttrs: false,
-  slots: ['checkable', 'title', 'icon', 'titleRender'],
+  slots: Object as CustomSlotsType<{
+    checkable: any;
+    title: any;
+    icon: any;
+    titleRender: any;
+    default: any;
+  }>,
   props: initDefaultProps(treeProps(), {
     prefixCls: 'vc-tree',
     showLine: false,

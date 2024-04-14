@@ -10,6 +10,7 @@ import { defineComponent, watch, computed, onMounted } from 'vue';
 import PropTypes from '../../../_util/vue-types';
 import useState from '../../../_util/hooks/useState';
 import EllipsisOutlined from '@ant-design/icons-vue/EllipsisOutlined';
+import type { CustomSlotsType } from '../../../_util/type';
 
 export const operationNodeProps = {
   prefixCls: { type: String },
@@ -35,7 +36,10 @@ export default defineComponent({
   inheritAttrs: false,
   props: operationNodeProps,
   emits: ['tabClick'],
-  slots: ['moreIcon'],
+  slots: Object as CustomSlotsType<{
+    moreIcon: any;
+    default: any;
+  }>,
   setup(props, { attrs, slots }) {
     // ======================== Dropdown ========================
     const [open, setOpen] = useState(false);

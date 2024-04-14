@@ -17,6 +17,7 @@ import { warning } from '../vc-util/warning';
 import type { DragNodeEvent, Key } from './interface';
 import pickAttrs from '../_util/pickAttrs';
 import eagerComputed from '../_util/eagerComputed';
+import type { CustomSlotsType } from '../_util/type';
 
 const ICON_OPEN = 'open';
 const ICON_CLOSE = 'close';
@@ -29,7 +30,12 @@ export default defineComponent({
   inheritAttrs: false,
   props: treeNodeProps,
   isTreeNode: 1,
-  slots: ['title', 'icon', 'switcherIcon'],
+  slots: Object as CustomSlotsType<{
+    title: any;
+    icon: any;
+    switcherIcon: any;
+    default: any;
+  }>,
   setup(props, { attrs, slots, expose }) {
     warning(
       !('slots' in props.data),

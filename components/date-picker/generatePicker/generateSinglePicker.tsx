@@ -13,7 +13,7 @@ import useConfigInject from '../../_util/hooks/useConfigInject';
 import classNames from '../../_util/classNames';
 import type { CommonProps, DatePickerProps } from './props';
 import { commonProps, datePickerProps } from './props';
-
+import type { CustomSlotsType } from '../../_util/type';
 import devWarning from '../../vc-util/devWarning';
 import { useInjectFormItemContext } from '../../form/FormItemContext';
 
@@ -32,18 +32,19 @@ export default function generateSinglePicker<DateType, ExtraProps = {}>(
       name: displayName,
       inheritAttrs: false,
       props: comProps,
-      slots: [
-        'suffixIcon',
-        // 'clearIcon',
-        'prevIcon',
-        'nextIcon',
-        'superPrevIcon',
-        'superNextIcon',
-        // 'panelRender',
-        'dateRender',
-        'renderExtraFooter',
-        'monthCellRender',
-      ],
+      slots: Object as CustomSlotsType<{
+        suffixIcon: any;
+        clearIcon: any;
+        prevIcon: any;
+        nextIcon: any;
+        superPrevIcon: any;
+        superNextIcon: any;
+        dateRender: any;
+        renderExtraFooter: any;
+        monthCellRender: any;
+        monthCellContentRender: any;
+        default: any;
+      }>,
       setup(_props, { slots, expose, attrs, emit }) {
         // 兼容 vue 3.2.7
         const props = _props as unknown as CommonProps<DateType> &
