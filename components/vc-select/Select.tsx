@@ -147,7 +147,7 @@ export function selectProps<
     // >>> Icon
     menuItemSelectedIcon: PropTypes.any,
 
-    mode: String as PropType<'combobox' | 'multiple' | 'tags'>,
+    mode: String as PropType<'combobox' | 'multiple' | 'tags' | 'filterable'>,
     labelInValue: { type: Boolean, default: undefined },
     value: PropTypes.any,
     defaultValue: PropTypes.any,
@@ -356,7 +356,7 @@ export default defineComponent({
     // Fill options with search value if needed
     const filledSearchOptions = computed(() => {
       if (
-        props.mode !== 'tags' ||
+        (props.mode !== 'tags' && props.mode !== 'filterable') ||
         !mergedSearchValue.value ||
         filteredOptions.value.some(
           item => item[props.optionFilterProp || 'value'] === mergedSearchValue.value,

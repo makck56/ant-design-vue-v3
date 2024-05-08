@@ -43,20 +43,21 @@ const SingleSelector = defineComponent<SelectorProps>({
     const inputChanged = ref(false);
 
     const combobox = computed(() => props.mode === 'combobox');
-    const inputEditable = computed(() => combobox.value || props.showSearch);
+    const filterable = computed(() => props.mode === 'filterable');
+    const inputEditable = computed(() => filterable.value || combobox.value || props.showSearch);
 
     const inputValue = computed(() => {
       let inputValue: string = props.searchValue || '';
-      if (combobox.value && props.activeValue && !inputChanged.value) {
+      if (filterable.value && props.activeValue && !inputChanged.value) {
         inputValue = props.activeValue;
       }
       return inputValue;
     });
     const legacyTreeSelectContext = useInjectLegacySelectContext();
     watch(
-      [combobox, () => props.activeValue],
+      [filterable, () => props.activeValue],
       () => {
-        if (combobox.value) {
+        if (filterable.value) {
           inputChanged.value = false;
         }
       },

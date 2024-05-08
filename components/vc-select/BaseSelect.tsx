@@ -62,7 +62,7 @@ export type RenderNode = VueNode | ((props: any) => VueNode);
 
 export type RenderDOMFunc = (props: any) => HTMLElement;
 
-export type Mode = 'multiple' | 'tags' | 'combobox';
+export type Mode = 'multiple' | 'tags' | 'combobox' | 'filterable';
 
 export type Placement = 'bottomLeft' | 'bottomRight' | 'topLeft' | 'topRight';
 
