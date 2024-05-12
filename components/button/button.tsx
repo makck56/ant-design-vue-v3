@@ -18,7 +18,7 @@ import LoadingIcon from './LoadingIcon';
 
 import type { ButtonType } from './buttonTypes';
 import type { VNode, Ref } from 'vue';
-import { CustomSlotsType } from '../_util/type';
+import type { CustomSlotsType } from '../_util/type';
 
 type Loading = boolean | number;
 

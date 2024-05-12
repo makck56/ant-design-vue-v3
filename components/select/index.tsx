@@ -13,7 +13,7 @@ import { useInjectFormItemContext } from '../form/FormItemContext';
 import { getTransitionName } from '../_util/transition';
 import type { SizeType } from '../config-provider';
 import { initDefaultProps } from '../_util/props-util';
-import { CustomSlotsType } from '../_util/type';
+import type { CustomSlotsType } from '../_util/type';
 
 type RawValue = string | number;
 

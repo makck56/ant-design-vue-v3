@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-type-imports */
-import 'vue/jsx'
+// eslint-disable-next-line import/no-unresolved
+import 'vue/jsx';
+
 declare module 'vue' {
   export interface GlobalComponents {
     AAffix: typeof import('ant-design-vue')['Affix'];

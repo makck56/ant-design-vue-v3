@@ -36,7 +36,7 @@ export default function Column(props: ColumnProps, { slots }: any) {
     halfCheckedSet,
     loadingKeys,
     isSelectable,
-  } = props
+  } = props;
   const menuPrefixCls = `${prefixCls}-menu`;
   const menuItemPrefixCls = `${prefixCls}-menu-item`;
 
@@ -150,7 +150,9 @@ export default function Column(props: ColumnProps, { slots }: any) {
                 }}
               />
             )}
-            <div class={`${menuItemPrefixCls}-content`}>{ slots.option ? slots.option(option) : label}</div>
+            <div class={`${menuItemPrefixCls}-content`}>
+              {slots.option ? slots.option(option) : label}
+            </div>
             {!isLoading && expandIcon && !isMergedLeaf && (
               <div class={`${menuItemPrefixCls}-expand-icon`}>{expandIcon}</div>
             )}

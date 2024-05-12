@@ -8,7 +8,7 @@ const TITLE_ELE_LIST = tupleNum(1, 2, 3, 4, 5);
 
 export const titleProps = () => ({
   ...omit(baseProps(), ['component', 'strong']),
-  level: Number as PropType<typeof TITLE_ELE_LIST[number]>,
+  level: Number as PropType<(typeof TITLE_ELE_LIST)[number]>,
 });
 
 export type TitleProps = Partial<ExtractPropTypes<ReturnType<typeof titleProps>>>;

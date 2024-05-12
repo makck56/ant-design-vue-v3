@@ -25,22 +25,15 @@ Customize the dropdown menu via `dropdownRender`.
     <template #dropdownRender="{ menuNode: menu }">
       <v-nodes :vnodes="menu" />
       <a-divider style="margin: 4px 0" />
-      <a-input
-        style="padding: 4px 8px; cursor: pointer"
-        @click="addItem"
-      >
-      </a-input>
+      <a-input style="padding: 4px 8px; cursor: pointer" @click="addItem"></a-input>
     </template>
   </a-select>
 </template>
 <script lang="ts">
-import { PlusOutlined } from '@ant-design/icons-vue';
 import { defineComponent, ref } from 'vue';
 
-let index = 0;
 export default defineComponent({
   components: {
-    PlusOutlined,
     VNodes: (_, { attrs }) => {
       return attrs.vnodes;
     },

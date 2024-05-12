@@ -10,7 +10,7 @@ import { useInjectFormItemContext } from '../form/FormItemContext';
 
 const RadioGroupSizeTypes = tuple('large', 'default', 'small');
 
-export type RadioGroupSize = typeof RadioGroupSizeTypes[number];
+export type RadioGroupSize = (typeof RadioGroupSizeTypes)[number];
 
 export type RadioGroupOption = RadioGroupOptionType;
 

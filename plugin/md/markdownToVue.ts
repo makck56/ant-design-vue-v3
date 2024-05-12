@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
+// eslint-disable-next-line import/no-unresolved
 import LRUCache from 'lru-cache';
 import type { MarkdownOptions, MarkdownParsedData, MarkdownRenderer } from './markdown/markdown';
 import { createMarkdownRenderer } from './markdown/markdown';

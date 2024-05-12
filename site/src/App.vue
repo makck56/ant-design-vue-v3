@@ -16,7 +16,7 @@ import zhCN from '../../components/locale/zh_CN';
 import dayjs from 'dayjs';
 import 'dayjs/locale/zh-cn';
 function isZhCN(name: string) {
-  return true;
+  return /-cn\/?$/.test(name);
 }
 export interface GlobalConfig {
   isMobile: Ref<boolean>;

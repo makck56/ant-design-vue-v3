@@ -18,8 +18,8 @@ export interface rowContextState {
 }
 
 export const rowProps = () => ({
-  align: String as PropType<typeof RowAligns[number]>,
-  justify: String as PropType<typeof RowJustify[number]>,
+  align: String as PropType<(typeof RowAligns)[number]>,
+  justify: String as PropType<(typeof RowJustify)[number]>,
   prefixCls: String,
   gutter: {
     type: [Number, Array, Object] as PropType<Gutter | [Gutter, Gutter]>,

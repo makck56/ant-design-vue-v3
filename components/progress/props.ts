@@ -4,11 +4,11 @@ import { tuple } from '../_util/type';
 import type { PropType, ExtractPropTypes } from 'vue';
 
 export const progressStatuses = tuple('normal', 'exception', 'active', 'success');
-export type ProgressStatusesType = typeof progressStatuses[number];
+export type ProgressStatusesType = (typeof progressStatuses)[number];
 const ProgressType = tuple('line', 'circle', 'dashboard');
-export type ProgressType = typeof ProgressType[number];
+export type ProgressType = (typeof ProgressType)[number];
 const ProgressSize = tuple('default', 'small');
-export type ProgressSize = typeof ProgressSize[number];
+export type ProgressSize = (typeof ProgressSize)[number];
 export type StringGradients = { [percentage: string]: string };
 type FromToGradients = { from: string; to: string };
 export type ProgressGradient = { direction?: string } & (StringGradients | FromToGradients);
