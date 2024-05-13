@@ -191,6 +191,7 @@ export const baseSelectPropsWithoutPrivate = () => {
     // >>> Selector
     maxTagTextLength: Number,
     maxTagCount: { type: [String, Number] as PropType<number | 'responsive'> },
+    maxCount: { type: Number },
     maxTagPlaceholder: PropTypes.any,
 
     // >>> Search

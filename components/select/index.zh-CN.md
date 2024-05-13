@@ -45,6 +45,7 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_0XzgOis7/Select.svg
 | getPopupContainer | 菜单渲染父节点。默认渲染到 body 上，如果你遇到菜单滚动定位问题，试试修改为滚动的区域，并相对其定位。 | function(triggerNode) | () => document.body |  |
 | labelInValue | 是否把每个选项的 label 包装到 value 中，会把 Select 的 value 类型从 `string` 变为 `{key: string, label: vNodes, originLabel: any}` 的格式, originLabel（3.1） 保持原始类型，如果通过 a-select-option children 构造的节点，该值是是个函数（即 a-select-option 的默认插槽） | boolean | false |  |
 | listHeight | 设置弹窗滚动高度 | number | 256 |  |
+| maxCount | 指定可选中的最多 `items` 数量，仅在 `mode` 为 `multiple` 或 `tags` 时生效 | number | - | 3.3.21 |
 | maxTagCount | 最多显示多少个 tag | number | - |  |
 | maxTagPlaceholder | 隐藏 tag 时显示的内容 | slot \| function(omittedValues) | - |  |
 | maxTagTextLength | 最大显示的 tag 文本长度 | number | - |  |
@@ -59,8 +60,8 @@ cover: https://gw.alipayobjects.com/zos/alicdn/_0XzgOis7/Select.svg
 | placeholder | 选择框默认文字 | string\|slot | - |  |
 | removeIcon | 自定义的多选框清除图标 | VNode \| slot | - |  |
 | searchValue | 控制搜索文本 | string | - |  |
-| showArrow | 是否显示下拉小箭头 | boolean | 单选为true,多选为false |  |
-| showSearch | 配置是否可搜索 | boolean | 单选为false,多选为true |  |
+| showArrow | 是否显示下拉小箭头 | boolean | 单选为 true,多选为 false |  |
+| showSearch | 配置是否可搜索 | boolean | 单选为 false,多选为 true |  |
 | size | 选择框大小，可选 `large` `small` | string | default |  |
 | suffixIcon | 自定义的选择框后缀图标 | VNode \| slot | - |  |
 | tagRender | 自定义 tag 内容 render，仅在 `mode` 为 `multiple` 或 `tags` 时生效 | slot \| (props) => any | - | 3.0 |

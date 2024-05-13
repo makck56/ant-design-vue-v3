@@ -85,6 +85,8 @@ const OptionList = defineComponent({
       activeIndex: getEnabledActiveIndex(0),
     });
 
+    const listDisabled = computed(() => props.rawValues.size >= props.maxCount);
+
     const setActive = (index: number, fromKeyboard = false) => {
       state.activeIndex = index;
       const info = { source: fromKeyboard ? ('keyboard' as const) : ('mouse' as const) };
@@ -292,6 +294,7 @@ const OptionList = defineComponent({
                 const { group, groupOption, data, value } = item;
                 const { key } = data;
                 const label = typeof item.label === 'function' ? item.label() : item.label;
+                const maxCountDisabled = listDisabled.value && !props.rawValues.has(value);
                 // Group
                 if (group) {
                   const groupTitle = data.title ?? (isTitleType(label) && label);
@@ -304,16 +307,8 @@ const OptionList = defineComponent({
                     </div>
                   );
                 }
-
-                const {
-                  disabled,
-                  title,
-                  children,
-                  style,
-                  class: cls,
-                  className,
-                  ...otherProps
-                } = data;
+                const { title, children, style, class: cls, className, ...otherProps } = data;
+                const disabled = maxCountDisabled || data.disabled;
                 const passedProps = omit(otherProps, omitFieldNameList);
                 // Option
                 const selected = isSelected(value);

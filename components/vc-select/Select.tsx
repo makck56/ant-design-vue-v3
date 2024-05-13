@@ -555,6 +555,7 @@ export default defineComponent({
         onActiveValue,
         defaultActiveFirstOption: mergedDefaultActiveFirstOption,
         onSelect: onInternalSelect,
+        maxCount: toRef(props, 'maxCount'),
         menuItemSelectedIcon: toRef(props, 'menuItemSelectedIcon'),
         rawValues,
         fieldNames: mergedFieldNames,

@@ -16,6 +16,7 @@ export interface SelectContextProps {
   onActiveValue: OnActiveValue;
   defaultActiveFirstOption?: boolean;
   onSelect: OnInternalSelect;
+  maxCount: number;
   menuItemSelectedIcon?: RenderNode;
   rawValues: Set<RawValueType>;
   fieldNames?: FieldNames;

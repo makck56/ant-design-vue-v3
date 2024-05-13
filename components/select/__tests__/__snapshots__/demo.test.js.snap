@@ -171,6 +171,24 @@ exports[`renders ./components/select/demo/label-in-value.vue correctly 1`] = `
 </div>
 `;
 
+exports[`renders ./components/select/demo/max-count.vue correctly 1`] = `
+<div maxcount="2" style="width: 100%;" class="ant-select ant-select-multiple ant-select-show-search">
+  <!---->
+  <!---->
+  <div class="ant-select-selector">
+    <div class="ant-select-selection-overflow">
+      <!---->
+      <div class="ant-select-selection-overflow-item ant-select-selection-overflow-item-suffix" style="opacity: 1;">
+        <div class="ant-select-selection-search" style="width: 0px;"><input type="search" id="rc_select_TEST_OR_SSR" autocomplete="off" class="ant-select-selection-search-input" role="combobox" aria-haspopup="listbox" aria-owns="rc_select_TEST_OR_SSR_list" aria-autocomplete="list" aria-controls="rc_select_TEST_OR_SSR_list" aria-activedescendant="rc_select_TEST_OR_SSR_list_0"><span class="ant-select-selection-search-mirror" aria-hidden="true">&nbsp;</span></div>
+      </div>
+      <!---->
+    </div><span class="ant-select-selection-placeholder">Max Count</span>
+  </div>
+  <!---->
+  <!---->
+</div>
+`;
+
 exports[`renders ./components/select/demo/multiple.vue correctly 1`] = `
 <div style="width: 100%;" class="ant-select ant-select-multiple ant-select-show-search">
   <!---->

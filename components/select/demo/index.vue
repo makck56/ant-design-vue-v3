@@ -3,6 +3,7 @@
     <Basic />
     <Size />
     <Tags />
+    <MaxCount />
     <Responsive />
     <AutomaticTokenization />
     <LabelInValue />
@@ -24,6 +25,7 @@
 import Basic from './basic.vue';
 import Size from './size.vue';
 import Tags from './tags.vue';
+import MaxCount from './max-count.vue';
 import AutomaticTokenization from './automatic-tokenization.vue';
 import LabelInValue from './label-in-value.vue';
 import Multiple from './multiple.vue';
@@ -50,6 +52,7 @@ export default defineComponent({
     Basic,
     Size,
     Tags,
+    MaxCount,
     AutomaticTokenization,
     LabelInValue,
     Multiple,
