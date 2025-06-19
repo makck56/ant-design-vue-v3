@@ -1,13 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders ./components/mentions/demo/async.vue correctly 1`] = `
-<div class="ant-mentions"><textarea rows="1"></textarea>
+<div class="ant-mentions"><textarea rows="1" value=""></textarea>
   <!---->
 </div>
 `;
 
 exports[`renders ./components/mentions/demo/basic.vue correctly 1`] = `
-<div class="ant-mentions"><textarea autofocus="" rows="1"></textarea>
+<div class="ant-mentions"><textarea autofocus="" rows="1" value="@afc163"></textarea>
   <!---->
 </div>
 `;
@@ -21,7 +21,7 @@ exports[`renders ./components/mentions/demo/form.vue correctly 1`] = `
     <div class="ant-col ant-col-18 ant-form-item-control">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
-          <div class="ant-mentions"><textarea rows="1" id="form_item_coders"></textarea>
+          <div class="ant-mentions"><textarea rows="1" id="form_item_coders" value=""></textarea>
             <!---->
           </div>
         </div>
@@ -38,7 +38,7 @@ exports[`renders ./components/mentions/demo/form.vue correctly 1`] = `
     <div class="ant-col ant-col-18 ant-form-item-control">
       <div class="ant-form-item-control-input">
         <div class="ant-form-item-control-input-content">
-          <div class="ant-mentions"><textarea rows="3" placeholder="You can use @ to ref user here" id="form_item_bio"></textarea>
+          <div class="ant-mentions"><textarea rows="3" placeholder="You can use @ to ref user here" id="form_item_bio" value=""></textarea>
             <!---->
           </div>
         </div>
@@ -67,13 +67,13 @@ exports[`renders ./components/mentions/demo/form.vue correctly 1`] = `
 `;
 
 exports[`renders ./components/mentions/demo/placement.vue correctly 1`] = `
-<div class="ant-mentions"><textarea rows="1"></textarea>
+<div class="ant-mentions"><textarea rows="1" value=""></textarea>
   <!---->
 </div>
 `;
 
 exports[`renders ./components/mentions/demo/prefix.vue correctly 1`] = `
-<div class="ant-mentions"><textarea rows="1" placeholder="input @ to mention people, # to mention tag"></textarea>
+<div class="ant-mentions"><textarea rows="1" placeholder="input @ to mention people, # to mention tag" value=""></textarea>
   <!---->
 </div>
 `;
@@ -81,11 +81,11 @@ exports[`renders ./components/mentions/demo/prefix.vue correctly 1`] = `
 exports[`renders ./components/mentions/demo/readonly.vue correctly 1`] = `
 <div>
   <div style="margin-bottom: 10px;">
-    <div class="ant-mentions ant-mentions-disabled"><textarea disabled="" rows="1" placeholder="this is disabled Mentions"></textarea>
+    <div class="ant-mentions ant-mentions-disabled"><textarea disabled="" rows="1" placeholder="this is disabled Mentions" value=""></textarea>
       <!---->
     </div>
   </div>
-  <div class="ant-mentions"><textarea rows="1" placeholder="this is readOnly a-mentions" readonly=""></textarea>
+  <div class="ant-mentions"><textarea rows="1" placeholder="this is readOnly a-mentions" readonly="" value=""></textarea>
     <!---->
   </div>
 </div>

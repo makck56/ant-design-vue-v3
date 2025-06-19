@@ -186,7 +186,12 @@ const Mentions = defineComponent({
         direction: direction.value,
         filterOption: props.filterOption,
         getPopupContainer,
-        options: props.options || getOptions(),
+        options:
+          props.options !== undefined
+            ? props.options
+            : getOptions().length > 0
+            ? getOptions()
+            : undefined,
         class: mergedClassName,
         ...otherAttrs,
         rows,
@@ -200,7 +205,7 @@ const Mentions = defineComponent({
       };
       return (
         <VcMentions
-          {...mentionsProps}
+          {...(mentionsProps as any)}
           v-slots={{ notFoundContent: getNotFoundContent, option: slots.option }}
         ></VcMentions>
       );

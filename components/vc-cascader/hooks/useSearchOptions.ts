@@ -28,7 +28,8 @@ export default (
     function dig(list: DefaultOptionType[], pathOptions: DefaultOptionType[]) {
       list.forEach(option => {
         // Perf saving when `sort` is disabled and `limit` is provided
-        if (!sort && limit > 0 && filteredOptions.length >= limit) {
+        const numericLimit = typeof limit === 'number' ? limit : 0;
+        if (!sort && numericLimit > 0 && filteredOptions.length >= numericLimit) {
           return;
         }
 
@@ -72,6 +73,8 @@ export default (
       });
     }
 
-    return limit > 0 ? filteredOptions.slice(0, limit as number) : filteredOptions;
+    return typeof limit === 'number' && limit > 0
+      ? filteredOptions.slice(0, limit)
+      : filteredOptions;
   });
 };

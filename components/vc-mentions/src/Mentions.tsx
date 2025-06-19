@@ -218,7 +218,8 @@ export default defineComponent({
     const getOptions = (measureText?: string) => {
       const targetMeasureText = measureText || state.measureText || '';
       const { filterOption } = props;
-      const list = props.options.filter((option: OptionProps) => {
+      const optionsList = Array.isArray(props.options) ? props.options : [];
+      const list = optionsList.filter((option: OptionProps) => {
         /** Return all result if `filterOption` is false. */
         if (!!filterOption === false) {
           return true;

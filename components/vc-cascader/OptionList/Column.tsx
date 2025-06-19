@@ -6,6 +6,7 @@ import type { Key } from '../../_util/type';
 import { useInjectCascader } from '../context';
 export const FIX_LABEL = '__cascader_fix_label__';
 export interface ColumnProps {
+  level: number;
   prefixCls: string;
   multiple?: boolean;
   options: DefaultOptionType[];
@@ -22,7 +23,8 @@ export interface ColumnProps {
   isSelectable: (option: DefaultOptionType) => boolean;
 }
 
-export default function Column(props: ColumnProps, { slots }: any) {
+export default function Column(props: ColumnProps, context: any) {
+  const { slots } = context;
   const {
     prefixCls,
     multiple,
@@ -54,7 +56,7 @@ export default function Column(props: ColumnProps, { slots }: any) {
 
   const hoverOpen = expandTrigger.value === 'hover';
   // ============================ Render ============================
-  return (
+  const menuNodes = (
     <ul class={menuPrefixCls} role="menu">
       {options.map(option => {
         const { disabled } = option;
@@ -151,7 +153,7 @@ export default function Column(props: ColumnProps, { slots }: any) {
               />
             )}
             <div class={`${menuItemPrefixCls}-content`}>
-              {slots.option ? slots.option(option) : label}
+              {slots.option ? slots.option({ option, options }) : label}
             </div>
             {!isLoading && expandIcon && !isMergedLeaf && (
               <div class={`${menuItemPrefixCls}-expand-icon`}>{expandIcon}</div>
@@ -164,8 +166,12 @@ export default function Column(props: ColumnProps, { slots }: any) {
       })}
     </ul>
   );
+  return (
+    <div>{slots?.dropdownRender ? slots?.dropdownRender({ ...props, menuNodes }) : menuNodes}</div>
+  );
 }
 Column.props = [
+  'level',
   'prefixCls',
   'multiple',
   'options',

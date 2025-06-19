@@ -16,7 +16,7 @@ If you need several buttons, we recommend that you use 1 primary button + n seco
 </docs>
 
 <template>
-  <a-button type="primary">Primary</a-button>
+  <a-button ref="buttonRef" type="primary">Primary</a-button>
   <a-button>secondary</a-button>
   <a-dropdown>
     <template #overlay>
@@ -35,7 +35,7 @@ If you need several buttons, we recommend that you use 1 primary button + n seco
 <script lang="ts">
 import { DownOutlined } from '@ant-design/icons-vue';
 import type { MenuProps } from 'ant-design-vue';
-import { defineComponent } from 'vue';
+import { defineComponent, ref, watchEffect } from 'vue';
 export default defineComponent({
   components: {
     DownOutlined,
@@ -44,7 +44,12 @@ export default defineComponent({
     const handleMenuClick: MenuProps['onClick'] = e => {
       console.log('click', e);
     };
+    const buttonRef = ref();
+    watchEffect(() => {
+      console.log(buttonRef);
+    });
     return {
+      buttonRef,
       handleMenuClick,
     };
   },

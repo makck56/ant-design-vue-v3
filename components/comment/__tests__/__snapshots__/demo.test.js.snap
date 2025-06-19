@@ -35,7 +35,7 @@ exports[`renders ./components/comment/demo/editor.vue correctly 1`] = `
           <!---->
           <div class="ant-col ant-form-item-control">
             <div class="ant-form-item-control-input">
-              <div class="ant-form-item-control-input-content"><textarea rows="4" class="ant-input"></textarea></div>
+              <div class="ant-form-item-control-input-content"><textarea rows="4" class="ant-input" value=""></textarea></div>
               <!---->
             </div>
             <!---->

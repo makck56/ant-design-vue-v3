@@ -4,7 +4,6 @@ import md from '../plugin/md';
 import docs from '../plugin/docs';
 import vueJsx from '@vitejs/plugin-vue-jsx';
 import { additionalData } from './themeConfig';
-import VueDevTools from 'vite-plugin-vue-devtools';
 /**
  * @type {import('vite').UserConfig}
  */
@@ -31,7 +30,6 @@ export default {
     vue({
       include: [/\.vue$/, /\.md$/],
     }),
-    VueDevTools(),
   ],
   optimizeDeps: {
     include: [

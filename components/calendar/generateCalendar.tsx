@@ -11,8 +11,8 @@ import type {
 import { useLocaleReceiver } from '../locale-provider/LocaleReceiver';
 import enUS from './locale/en_US';
 import CalendarHeader from './Header';
-import type { VueNode } from '../_util/type';
-import type { App } from 'vue';
+import type { CustomSlotsType, VueNode } from '../_util/type';
+import type { App, PropType } from 'vue';
 import { computed, defineComponent, toRef } from 'vue';
 import useConfigInject from '../_util/hooks/useConfigInject';
 import classNames from '../_util/classNames';
@@ -66,10 +66,7 @@ export interface CalendarProps<DateType> {
   valueFormat?: string;
 }
 
-function generateCalendar<
-  DateType,
-  Props extends CalendarProps<DateType> = CalendarProps<DateType>,
->(generateConfig: GenerateConfig<DateType>) {
+function generateCalendar<DateType>(generateConfig: GenerateConfig<DateType>) {
   function isSameYear(date1: DateType, date2: DateType) {
     return date1 && date2 && generateConfig.getYear(date1) === generateConfig.getYear(date2);
   }
@@ -85,36 +82,73 @@ function generateCalendar<
       isSameMonth(date1, date2) && generateConfig.getDate(date1) === generateConfig.getDate(date2)
     );
   }
-
-  const Calendar = defineComponent<Props>({
+  function calendarProps<DateType = any>() {
+    return {
+      prefixCls: String,
+      locale: {
+        type: Object as PropType<typeof enUS>,
+      },
+      validRange: {
+        type: Array as unknown as PropType<[DateType, DateType]>,
+      },
+      disabledDate: {
+        type: Function as PropType<(date: DateType) => boolean>,
+      },
+      dateFullCellRender: {
+        type: Function as PropType<CustomRenderType<DateType>>,
+      },
+      dateCellRender: {
+        type: Function as PropType<CustomRenderType<DateType>>,
+      },
+      monthFullCellRender: {
+        type: Function as PropType<CustomRenderType<DateType>>,
+      },
+      monthCellRender: {
+        type: Function as PropType<CustomRenderType<DateType>>,
+      },
+      headerRender: {
+        type: Function as PropType<HeaderRender<DateType>>,
+      },
+      value: {
+        type: [Object, String] as PropType<DateType | string>,
+      },
+      defaultValue: {
+        type: [Object, String] as PropType<DateType | string>,
+      },
+      mode: {
+        type: String as PropType<CalendarMode>,
+      },
+      fullscreen: {
+        type: Boolean,
+        default: true,
+      },
+      onChange: {
+        type: Function as PropType<(date: DateType | string) => void>,
+      },
+      'onUpdate:value': {
+        type: Function as PropType<(date: DateType | string) => void>,
+      },
+      onPanelChange: {
+        type: Function as PropType<(date: DateType | string, mode: CalendarMode) => void>,
+      },
+      onSelect: {
+        type: Function as PropType<(date: DateType | string) => void>,
+      },
+      valueFormat: String,
+    };
+  }
+  const Calendar = defineComponent({
     name: 'ACalendar',
     inheritAttrs: false,
-    props: [
-      'prefixCls',
-      'locale',
-      'validRange',
-      'disabledDate',
-      'dateFullCellRender',
-      'dateCellRender',
-      'monthFullCellRender',
-      'monthCellRender',
-      'headerRender',
-      'value',
-      'defaultValue',
-      'mode',
-      'fullscreen',
-      'onChange',
-      'onPanelChange',
-      'onSelect',
-      'valueFormat',
-    ] as any,
-    slots: [
-      'dateFullCellRender',
-      'dateCellRender',
-      'monthFullCellRender',
-      'monthCellRender',
-      'headerRender',
-    ],
+    props: calendarProps(),
+    slots: Object as CustomSlotsType<{
+      dateFullCellRender: any;
+      dateCellRender: any;
+      monthFullCellRender: any;
+      monthCellRender: any;
+      headerRender: any;
+      default: any;
+    }>,
     setup(props, { emit, slots, attrs }) {
       const { prefixCls, direction } = useConfigInject('picker', props);
       const calendarPrefixCls = computed(() => `${prefixCls.value}-calendar`);

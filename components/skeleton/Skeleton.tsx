@@ -19,15 +19,12 @@ export const skeletonProps = () => ({
   prefixCls: String,
   avatar: {
     type: [Boolean, Object] as PropType<SkeletonAvatarProps | boolean>,
-    default: undefined as SkeletonAvatarProps | boolean,
   },
   title: {
     type: [Boolean, Object] as PropType<SkeletonTitleProps | boolean>,
-    default: undefined as SkeletonTitleProps | boolean,
   },
   paragraph: {
     type: [Boolean, Object] as PropType<SkeletonParagraphProps | boolean>,
-    default: undefined as SkeletonParagraphProps | boolean,
   },
   round: { type: Boolean, default: undefined },
 });
@@ -93,9 +90,9 @@ const Skeleton = defineComponent({
       const { loading, avatar, title, paragraph, active, round } = props;
       const pre = prefixCls.value;
       if (loading || props.loading === undefined) {
-        const hasAvatar = !!avatar || avatar === '';
-        const hasTitle = !!title || title === '';
-        const hasParagraph = !!paragraph || paragraph === '';
+        const hasAvatar = !!avatar;
+        const hasTitle = !!title;
+        const hasParagraph = !!paragraph;
 
         // Avatar
         let avatarNode;
@@ -103,7 +100,7 @@ const Skeleton = defineComponent({
           const avatarProps = {
             prefixCls: `${pre}-avatar`,
             ...getAvatarBasicProps(hasTitle, hasParagraph),
-            ...getComponentProps(avatar),
+            ...(getComponentProps(avatar) as any),
           };
 
           avatarNode = (
@@ -121,7 +118,7 @@ const Skeleton = defineComponent({
             const titleProps = {
               prefixCls: `${pre}-title`,
               ...getTitleBasicProps(hasAvatar, hasParagraph),
-              ...getComponentProps(title),
+              ...(getComponentProps(title) as any),
             };
 
             $title = <Title {...titleProps} />;
@@ -133,7 +130,7 @@ const Skeleton = defineComponent({
             const paragraphProps = {
               prefixCls: `${pre}-paragraph`,
               ...getParagraphBasicProps(hasAvatar, hasTitle),
-              ...getComponentProps(paragraph),
+              ...(getComponentProps(paragraph) as any),
             };
 
             paragraphNode = <Paragraph {...paragraphProps} />;

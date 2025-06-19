@@ -156,9 +156,7 @@ export default defineComponent({
     };
 
     useKeyboard(context, mergedOptions, fieldNames, activeValueCells, onPathOpen, onKeyboardSelect);
-    const onListMouseDown: EventHandler = event => {
-      event.preventDefault();
-    };
+    const onListMouseDown: EventHandler = _event => {};
     onMounted(() => {
       watch(
         activeValueCells,
@@ -218,12 +216,13 @@ export default defineComponent({
         return (
           <Column
             key={index}
+            level={index}
             {...columnProps}
             prefixCls={mergedPrefixCls.value}
             options={col.options}
             prevValuePath={prevValuePath}
             activeValue={activeValue}
-            v-slots={{ option: slots.option }}
+            v-slots={{ option: slots.option, dropdownRender: customSlots.value.dropdownRender }}
           />
         );
       });

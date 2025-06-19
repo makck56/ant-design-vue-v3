@@ -84,7 +84,9 @@ const Notification = defineComponent<NotificationProps>({
         key,
       };
       const { maxCount } = props;
-      const noticeIndex = notices.value.map(v => v.notice.key).indexOf(key);
+      const noticeIndex = notices.value
+        .map((v: { notice: { key: Key } }) => v.notice.key)
+        .indexOf(key);
       const updatedNotices = notices.value.concat();
       if (noticeIndex !== -1) {
         updatedNotices.splice(noticeIndex, 1, { notice, holderCallback } as any);
@@ -114,7 +116,7 @@ const Notification = defineComponent<NotificationProps>({
     };
 
     const remove = (removeKey: Key) => {
-      notices.value = notices.value.filter(({ notice: { key, userPassKey } }) => {
+      notices.value = (notices.value as any).filter(({ notice: { key, userPassKey } }) => {
         const mergedKey = userPassKey || key;
         return mergedKey !== removeKey;
       });
@@ -126,7 +128,7 @@ const Notification = defineComponent<NotificationProps>({
     });
     return () => {
       const { prefixCls, closeIcon = slots.closeIcon?.({ prefixCls }) } = props;
-      const noticeNodes = notices.value.map(({ notice, holderCallback }, index) => {
+      const noticeNodes = notices.value.map(({ notice, holderCallback }: any, index: number) => {
         const updateMark = index === notices.value.length - 1 ? notice.updateMark : undefined;
         const { key, userPassKey } = notice;
 

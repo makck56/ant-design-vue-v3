@@ -73,18 +73,14 @@ export type TimePickerProps<DateType> = CommonProps<DateType> &
     addon?: () => void;
   };
 
-function createTimePicker<
-  DateType,
-  DTimePickerProps extends TimePickerProps<DateType> = TimePickerProps<DateType>,
-  DTimeRangePickerProps extends TimeRangePickerProps<DateType> = TimeRangePickerProps<DateType>,
->(generateConfig: GenerateConfig<DateType>) {
+function createTimePicker<DateType>(generateConfig: GenerateConfig<DateType>) {
   const DatePicker = generatePicker<DateType>(generateConfig, {
     ...timePickerProps(),
     order: { type: Boolean, default: true },
   });
 
   const { TimePicker: InternalTimePicker, RangePicker: InternalRangePicker } = DatePicker as any;
-  const TimePicker = defineComponent<DTimePickerProps>({
+  const TimePicker = defineComponent({
     name: 'ATimePicker',
     inheritAttrs: false,
     props: {
@@ -92,7 +88,7 @@ function createTimePicker<
       ...datePickerProps<DateType>(),
       ...timePickerProps(),
       addon: { type: Function },
-    } as any,
+    },
     slot: ['addon', 'renderExtraFooter', 'suffixIcon', 'clearIcon'],
     setup(props, { slots, expose, emit, attrs }) {
       const formItemContext = useInjectFormItemContext();
@@ -132,6 +128,7 @@ function createTimePicker<
       return () => {
         const { id = formItemContext.id.value } = props;
         //restProps.addon
+
         return (
           <InternalTimePicker
             {...attrs}
@@ -155,7 +152,7 @@ function createTimePicker<
     },
   });
 
-  const TimeRangePicker = defineComponent<DTimeRangePickerProps>({
+  const TimeRangePicker = defineComponent({
     name: 'ATimeRangePicker',
     inheritAttrs: false,
     props: {
@@ -163,7 +160,7 @@ function createTimePicker<
       ...rangePickerProps<DateType>(),
       ...timePickerProps(),
       order: { type: Boolean, default: true },
-    } as any,
+    },
     slot: ['renderExtraFooter', 'suffixIcon', 'clearIcon'],
     setup(props, { slots, expose, emit, attrs }) {
       const pickerRef = ref();

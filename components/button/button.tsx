@@ -157,6 +157,7 @@ export default defineComponent({
       buttonNodeRef.value?.blur();
     };
     expose({
+      ref: buttonNodeRef,
       focus,
       blur,
     });

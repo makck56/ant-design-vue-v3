@@ -581,7 +581,20 @@ export default defineComponent({
         (props.onDropdownVisibleChange as any)(open, legacyParam);
       }
     };
-
+    const mergedDropdownRender = computed(() => {
+      const dropdownRender = props.dropdownRender || slots.dropdownRender;
+      if (dropdownRender) {
+        return dropdownRender;
+      }
+      return ({ menuNode }) => {
+        return (
+          <>
+            {slots.searchExtra?.()}
+            {menuNode}
+          </>
+        );
+      };
+    });
     // ====================== Display Change ========================
     const onDisplayValuesChange: BaseSelectProps['onDisplayValuesChange'] = (newValues, info) => {
       const newRawValues = newValues.map(item => item.value);
@@ -747,6 +760,7 @@ export default defineComponent({
           onSearch={onInternalSearch}
           // >>> Options
           OptionList={OptionList}
+          dropdownRender={mergedDropdownRender.value}
           emptyOptions={!mergedTreeData.value.length}
           onDropdownVisibleChange={onInternalDropdownVisibleChange}
           tagRender={props.tagRender || slots.tagRender}

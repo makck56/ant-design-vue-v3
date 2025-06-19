@@ -4,7 +4,7 @@ exports[`renders ./components/popconfirm/demo/basic.vue correctly 1`] = `<a href
 
 exports[`renders ./components/popconfirm/demo/dynamic-trigger.vue correctly 1`] = `
 <div>
-  <!----><a href="#">Delete a task</a><br><br> Whether directly execute： <label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked"><span class="ant-checkbox ant-checkbox-checked"><input type="checkbox" class="ant-checkbox-input"><span class="ant-checkbox-inner"></span></span>
+  <!----><a href="#">Delete a task</a><br><br> Whether directly execute： <label class="ant-checkbox-wrapper ant-checkbox-wrapper-checked"><span class="ant-checkbox ant-checkbox-checked"><input type="checkbox" class="ant-checkbox-input" checked=""><span class="ant-checkbox-inner"></span></span>
     <!---->
   </label>
 </div>
