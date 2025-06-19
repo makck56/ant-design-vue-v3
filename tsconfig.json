@@ -22,5 +22,14 @@
     "allowJs": true,
     "verbatimModuleSyntax": false
   },
-  "exclude": ["node_modules", "lib", "es", "dist", "v2-doc", "scripts", "**/__tests__/**/*"]
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "v2-doc",
+    "scripts",
+    ".github",
+    "**/__tests__/**/*"
+  ]
 }
