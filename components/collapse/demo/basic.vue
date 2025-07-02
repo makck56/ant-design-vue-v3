@@ -17,7 +17,7 @@ By default, any number of panels can be expanded at a time. The first panel is e
 </docs>
 
 <template>
-  <a-collapse v-model:activeKey="activeKey">
+  <a-collapse v-model:active-key="activeKey">
     <a-collapse-panel key="1" header="This is panel header 1">
       <p>{{ text }}</p>
     </a-collapse-panel>

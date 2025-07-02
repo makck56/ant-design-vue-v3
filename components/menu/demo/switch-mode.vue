@@ -26,8 +26,8 @@ Show the dynamic switching mode (between `inline` and `vertical`).
     <br />
     <br />
     <a-menu
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
+      v-model:open-keys="openKeys"
+      v-model:selected-keys="selectedKeys"
       style="width: 256px"
       :mode="mode"
       :theme="theme"

@@ -27,8 +27,8 @@ There are two built-in themes: `light` and `dark`. The default value is `light`.
     <br />
     <br />
     <a-menu
-      v-model:openKeys="openKeys"
-      v-model:selectedKeys="selectedKeys"
+      v-model:open-keys="openKeys"
+      v-model:selected-keys="selectedKeys"
       style="width: 256px"
       mode="inline"
       :theme="theme"

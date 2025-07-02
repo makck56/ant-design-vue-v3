@@ -33,6 +33,8 @@ module.exports = {
         project: './tsconfig.json',
       },
       rules: {
+        //暂时禁用vue/no-reserved-component-names
+        'vue/no-reserved-component-names': 0,
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/ban-types': 0,
         '@typescript-eslint/consistent-type-imports': 'error',
@@ -54,6 +56,8 @@ module.exports = {
       },
       rules: {
         'no-console': 'off',
+        //暂时禁用vue/no-reserved-component-names
+        'vue/no-reserved-component-names': 0,
         '@typescript-eslint/no-unused-vars': [
           'error',
           { vars: 'all', args: 'after-used', ignoreRestSiblings: true },

@@ -255,4 +255,8 @@ declare module 'vue' {
     AWeekPicker: typeof import('ant-design-vue')['WeekPicker'];
   }
 }
+declare module '*.md' {
+  const content: string;
+  export default content;
+}
 export {};

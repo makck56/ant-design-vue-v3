@@ -19,7 +19,7 @@ If you want to use a customized trigger, you can hide the default one by setting
   <a-layout>
     <a-layout-sider v-model:collapsed="collapsed" :trigger="null" collapsible>
       <div class="logo" />
-      <a-menu v-model:selectedKeys="selectedKeys" theme="dark" mode="inline">
+      <a-menu v-model:selected-keys="selectedKeys" theme="dark" mode="inline">
         <a-menu-item key="1">
           <user-outlined />
           <span>nav 1</span>

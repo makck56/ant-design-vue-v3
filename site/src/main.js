@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 import '../../components/style';
-import 'docsearch.js/dist/cdn/docsearch.css';
+// import 'docsearch.js/dist/cdn/docsearch.css';
 import './index.less';
 import 'nprogress/nprogress.css';
 import { createApp, Transition, TransitionGroup, version as vueVersion } from 'vue';

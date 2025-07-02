@@ -18,8 +18,8 @@ Submenus open as pop-ups.
 
 <template>
   <a-menu
-    v-model:openKeys="openKeys"
-    v-model:selectedKeys="selectedKeys"
+    v-model:open-keys="openKeys"
+    v-model:selected-keys="selectedKeys"
     style="width: 256px"
     mode="vertical"
     @click="handleClick"

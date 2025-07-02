@@ -19,7 +19,7 @@ Click the menu and you will see that all the other menus gets collapsed to keep 
 <template>
   <div>
     <a-menu
-      v-model:selectedKeys="selectedKeys"
+      v-model:selected-keys="selectedKeys"
       style="width: 256px"
       mode="inline"
       :open-keys="openKeys"

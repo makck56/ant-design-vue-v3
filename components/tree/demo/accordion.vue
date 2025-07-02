@@ -17,7 +17,7 @@ Nodes of the same level can only be expanded one
 </docs>
 <template>
   <a-tree
-    v-model:selectedKeys="selectedKeys"
+    v-model:selected-keys="selectedKeys"
     :expanded-keys="expandedKeys"
     :tree-data="treeData"
     @expand="handleExpand"

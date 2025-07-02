@@ -17,7 +17,7 @@ The Tab with Icon.
 </docs>
 
 <template>
-  <a-tabs v-model:activeKey="activeKey">
+  <a-tabs v-model:active-key="activeKey">
     <a-tab-pane key="1">
       <template #tab>
         <span>

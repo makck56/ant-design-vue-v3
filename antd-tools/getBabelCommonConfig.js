@@ -13,8 +13,8 @@ module.exports = function (modules) {
     resolve('@babel/plugin-transform-object-assign'),
     resolve('@babel/plugin-proposal-object-rest-spread'),
     resolve('@babel/plugin-proposal-export-default-from'),
-    resolve('@babel/plugin-proposal-export-namespace-from'),
-    resolve('@babel/plugin-proposal-class-properties'),
+    // resolve('@babel/plugin-proposal-export-namespace-from'),
+    // resolve('@babel/plugin-proposal-class-properties'),
     resolve('@babel/plugin-syntax-dynamic-import'),
     [
       resolve('@babel/plugin-transform-runtime'),

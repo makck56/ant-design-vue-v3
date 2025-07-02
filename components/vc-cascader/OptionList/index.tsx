@@ -156,7 +156,7 @@ export default defineComponent({
     };
 
     useKeyboard(context, mergedOptions, fieldNames, activeValueCells, onPathOpen, onKeyboardSelect);
-    const onListMouseDown: EventHandler = _event => {};
+    const onListMouseDown: EventHandler = () => {};
     onMounted(() => {
       watch(
         activeValueCells,

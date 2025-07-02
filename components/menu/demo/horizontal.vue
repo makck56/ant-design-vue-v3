@@ -17,7 +17,7 @@ Horizontal top navigation menu.
 </docs>
 
 <template>
-  <a-menu v-model:selectedKeys="current" mode="horizontal">
+  <a-menu v-model:selected-keys="current" mode="horizontal">
     <a-menu-item key="mail">
       <template #icon>
         <mail-outlined />

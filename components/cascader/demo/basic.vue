@@ -18,9 +18,9 @@ Cascade selection box for selecting province/city/district.
 <template>
   <a-cascader v-model:value="value" :options="options" placeholder="Please select">
     <template #option="option">{{ option.label }}+++</template>
-    <template #dropdownRender="{ level, options, menuNodes }">
-      <v-nodes :vnodes="menuNodes" />
-      <div v-if="level === 2" :style="{ display: 'flex', padding: 2 }">
+    <template #dropdownRender="params">
+      <v-nodes :vnodes="params.menuNodes" />
+      <div v-if="params.level === 2" :style="{ display: 'flex', padding: 2 }">
         <a-input />
         <a-button @click="addHandle(options)">添加</a-button>
       </div>

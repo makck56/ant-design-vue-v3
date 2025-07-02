@@ -127,7 +127,7 @@ Modify global theme color by css variable. Css variable depends on the design, i
         <!-- Menu - horizontal -->
         <a-row :gutter="16">
           <a-col :span="12">
-            <a-menu v-model:selectedKeys="selectedKeys" mode="horizontal">
+            <a-menu v-model:selected-keys="selectedKeys" mode="horizontal">
               <a-menu-item key="mail">
                 Mail
                 <template #icon>
@@ -144,7 +144,7 @@ Modify global theme color by css variable. Css variable depends on the design, i
             </a-menu>
           </a-col>
           <a-col :span="12">
-            <a-menu v-model:selectedKeys="selectedKeys" mode="horizontal" theme="dark">
+            <a-menu v-model:selected-keys="selectedKeys" mode="horizontal" theme="dark">
               <a-menu-item key="mail">
                 <template #icon><SettingOutlined /></template>
                 Mail
@@ -163,7 +163,7 @@ Modify global theme color by css variable. Css variable depends on the design, i
         <!-- Menu - vertical -->
         <a-row :gutter="16">
           <a-col :span="12">
-            <a-menu v-model:selectedKeys="selectedKeys" mode="inline">
+            <a-menu v-model:selected-keys="selectedKeys" mode="inline">
               <a-menu-item key="mail">
                 <template #icon><MailOutlined /></template>
                 Mail
@@ -178,7 +178,7 @@ Modify global theme color by css variable. Css variable depends on the design, i
             </a-menu>
           </a-col>
           <a-col :span="12">
-            <a-menu v-model:selectedKeys="selectedKeys" mode="vertical" theme="dark">
+            <a-menu v-model:selected-keys="selectedKeys" mode="vertical" theme="dark">
               <a-menu-item key="mail">
                 <template #icon><MailOutlined /></template>
                 Mail

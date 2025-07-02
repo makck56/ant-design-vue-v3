@@ -110,9 +110,9 @@ Components which support rtl direction are listed here, you can toggle the direc
         <a-col :span="12">
           <a-divider orientation="left">Tree example</a-divider>
           <a-tree
-            v-model:expandedKeys="expandedKeys"
-            v-model:selectedKeys="selectedKeys"
-            v-model:checkedKeys="checkedKeys"
+            v-model:expanded-keys="expandedKeys"
+            v-model:selected-keys="selectedKeys"
+            v-model:checked-keys="checkedKeys"
             show-line
             checkable
             :tree-data="treeData"
