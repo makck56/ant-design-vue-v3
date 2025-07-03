@@ -54,6 +54,12 @@ function getWebpackConfig(modules) {
   /** @type {import('webpack').Configuration} */
   const config = {
     devtool: 'source-map',
+    cache: {
+      type: 'filesystem',
+      buildDependencies: {
+        config: [__filename, __dirname + '/getBabelCommonConfig.js'],
+      },
+    },
 
     output: {
       path: getProjectPath('./dist/'),
