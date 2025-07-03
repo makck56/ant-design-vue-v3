@@ -3,7 +3,7 @@ const path = require('path');
 const webpack = require('webpack');
 const WebpackBar = require('webpackbar');
 const { merge } = require('webpack-merge');
-const TerserPlugin = require('terser-webpack-plugin');
+const { ESBuildMinifyPlugin } = require('esbuild-loader');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
@@ -24,7 +24,7 @@ const imageOptions = {
 
 function getWebpackConfig(modules) {
   const pkg = require(getProjectPath('package.json'));
-  const babelConfig = require('./getBabelCommonConfig')(modules || false);
+  const babelConfig = require('./getBabelCommonConfig')(modules || false, true);
 
   const pluginImportOptions = {
     style: true,
@@ -36,6 +36,20 @@ function getWebpackConfig(modules) {
   if (modules === false) {
     babelConfig.plugins.push(require.resolve('./replaceLib'));
   }
+
+  const jsLoader = [
+    {
+      loader: 'babel-loader',
+      options: babelConfig,
+    },
+    {
+      loader: 'esbuild-loader',
+      options: {
+        loader: 'tsx',
+        target: 'es2015',
+      },
+    },
+  ];
 
   /** @type {import('webpack').Configuration} */
   const config = {
@@ -88,46 +102,16 @@ function getWebpackConfig(modules) {
               loader: 'vue-loader',
               options: {
                 loaders: {
-                  js: [
-                    {
-                      loader: 'babel-loader',
-                      options: {
-                        presets: [resolve('@babel/preset-env')],
-                        plugins: [
-                          [
-                            resolve('@vue/babel-plugin-jsx'),
-                            { mergeProps: false, enableObjectSlots: false },
-                          ],
-                          resolve('@babel/plugin-proposal-object-rest-spread'),
-                        ],
-                      },
-                    },
-                  ],
+                  js: jsLoader,
                 },
               },
             },
           ],
         },
         {
-          test: /\.(js|jsx)$/,
-          loader: 'babel-loader',
+          test: /\.(js|jsx|ts|tsx)$/,
           exclude: /node_modules/,
-          options: babelConfig,
-        },
-        {
-          test: /\.tsx?$/,
-          use: [
-            {
-              loader: 'babel-loader',
-              options: babelConfig,
-            },
-            {
-              loader: 'ts-loader',
-              options: {
-                transpileOnly: true,
-              },
-            },
-          ],
+          use: jsLoader,
         },
         {
           test: /\.css$/,
@@ -230,11 +214,9 @@ All rights reserved.
     config.output.libraryTarget = 'umd';
     config.optimization = {
       minimizer: [
-        new TerserPlugin({
-          parallel: true,
-          terserOptions: {
-            warnings: false,
-          },
+        new ESBuildMinifyPlugin({
+          target: 'es2015',
+          css: true,
         }),
       ],
     };
@@ -268,7 +250,12 @@ All rights reserved.
       ],
       optimization: {
         minimize: true,
-        minimizer: [new CssMinimizerPlugin({})],
+        minimizer: [
+          new ESBuildMinifyPlugin({
+            target: 'es2015',
+            css: true,
+          }),
+        ],
       },
     });
 

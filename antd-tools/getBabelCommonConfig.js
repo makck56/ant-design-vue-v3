@@ -1,6 +1,6 @@
 const { resolve } = require('./utils/projectHelper');
 
-module.exports = function (modules) {
+module.exports = function (modules, pluginsOnly = false) {
   const plugins = [
     [
       resolve('@babel/plugin-transform-typescript'),
@@ -32,18 +32,8 @@ module.exports = function (modules) {
     // resolve('@babel/plugin-proposal-object-rest-spread'),
     // resolve('@babel/plugin-proposal-class-properties'),
   ];
-  return {
-    presets: [
-      [
-        resolve('@babel/preset-env'),
-        {
-          modules,
-          targets: {
-            browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'not ie 11'],
-          },
-        },
-      ],
-    ],
+
+  const config = {
     plugins,
     env: {
       test: {
@@ -51,4 +41,22 @@ module.exports = function (modules) {
       },
     },
   };
+
+  if (pluginsOnly) {
+    return config;
+  }
+
+  config.presets = [
+    [
+      resolve('@babel/preset-env'),
+      {
+        modules,
+        targets: {
+          browsers: ['last 2 versions', 'Firefox ESR', '> 1%', 'not ie 11'],
+        },
+      },
+    ],
+  ];
+
+  return config;
 };
